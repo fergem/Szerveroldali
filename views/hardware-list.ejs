@@ -1,0 +1,40 @@
+<%- include('header') -%>
+<div class="container-fluid w-50">
+    <h1>Hardware list  <a class="text-decoration-none text-dark" href="/companymembers"><i class="bi bi-arrow-return-left float-end"></i></a></h1>
+    <h5><%= companyMember.firstname ?? " "%> <%= companyMember.lastname ?? " "%></h5>
+    <p><%= companyMember.username ?? " "%> - <%= companyMember.domain ?? " "%></p>
+</div>
+
+<div class="container w-50 border border-secondary rounded  justify-center p-2 pb-0">
+    <table class="table align-middle table-hover">
+        <thead>
+          <tr>
+            <th class="bg-secondary bg-gradient bg-opacity-50">Type</th>
+            <th class="bg-secondary bg-gradient bg-opacity-50">Name</th>
+            <th class="bg-secondary bg-gradient bg-opacity-50">ID
+                <a class="text-decoration-none text-dark" href="/hardwares/<%= companyMember._id %>/new"><i class="bi bi-plus-circle float-end mx-1"></i></a>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+            <% hardwares.forEach(hardware => { %>
+                <tr>
+                    <td><%= hardware.itemType %></td>
+                    <td><%= hardware.name %></td>
+                    <td>
+                        <div>
+                            <%= hardware.identifier %>
+                            <a class="text-decoration-none text-dark" href="/hardwares/<%= companyMember._id %>/delete/<%= hardware._id %>">
+                                <i class="bi bi-trash float-end mx-1"></i>
+                            </a>
+                            <a class="text-decoration-none text-dark" href="/hardwares/<%= companyMember._id %>/edit/<%= hardware._id %>">
+                                <i class="bi bi-pencil-square float-end mx-1"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+      </table>
+</div>
+<%- include('footer') -%>

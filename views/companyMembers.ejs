@@ -1,0 +1,42 @@
+<%- include('header') -%>
+<h1>Company members</h1>
+        <div class="container w-50 border border-secondary rounded  justify-center p-2 pb-0 mt-4">          
+            <table class="table align-middle table-hover">
+                <thead>
+                  <tr>
+                    <th class="bg-secondary bg-gradient bg-opacity-50">Name</th>
+                    <th class="bg-secondary bg-gradient bg-opacity-50">Domain</th>
+                    <th class="bg-secondary bg-gradient bg-opacity-50">Username
+                        <a class="text-decoration-none text-dark" href="/companymembers/new"><i class="bi bi-plus-circle float-end mx-1"></i></a>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody> 
+                  <% companyMembers.forEach(member => { %>
+                    <tr>
+                        <td><%= member.firstname %> <%= member.lastname %></td>
+                        <td><%= member.domain %></td>
+                        <td>
+                            <div>
+                                <%= member.username %>
+                                <a class="text-decoration-none text-dark" href="/companymembers/<%= member._id %>/delete">
+                                    <i class="bi bi-trash float-end mx-1"></i>
+                                </a>
+                                <a class="text-decoration-none text-dark" href="/companymembers/<%= member._id %>/edit">
+                                    <i class="bi bi-pencil-square float-end mx-1"></i>
+                                </a>
+                                <a class="text-decoration-none text-dark" href="/softwares/<%= member._id %>">
+                                    <i class="bi bi-code-square float-end mx-1"></i>
+                                </a>
+                                <a class="text-decoration-none text-dark" href="/hardwares/<%= member._id %>">
+                                    <i class="bi bi-cpu float-end mx-1"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                <% }); %>
+                </tbody>
+              </table>
+
+        </div>
+<%- include('footer') -%>

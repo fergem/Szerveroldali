@@ -1,0 +1,32 @@
+<%- include('header') -%>
+<div class="container-fluid w-50 d-flex justify-content-center">
+    <h1>Hardware 
+        <% if (typeof hardware === 'undefined') 
+        { %> add <% }
+        else
+        { %> edit <% } %>
+    </h1>
+</div>
+
+<div class="container-fluid w-25 border border-secondary rounded p-4 mt-2">
+    <form method="post">
+        <div class="form-group mb-3">
+            <label for="itemType">Type</label>
+            <input type="text" id="itemType" class="form-control" name="itemType" value="<%= (typeof hardware === 'undefined') ? '' : hardware.itemType %>"></input>
+        </div>
+        <div class="form-group mb-3">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" name="name" value="<%= (typeof hardware === 'undefined') ? '' : hardware.name %>"></input>
+        </div>
+        <div class="form-group mb-3">
+            <label for="identifier">ID</label>
+            <input type="text" id="identifier" class="form-control" name="identifier" value="<%= (typeof hardware === 'undefined') ? '' : hardware.identifier %>"></input>
+        </div>
+        <div class="form-group d-flex justify-content-around">
+            <a class="btn btn-default border-dark" href="/hardwares/<%= companyMember._id %>"><i class="bi bi-arrow-return-left float-end"></i></a>
+            <button type="submit" class="btn btn-dark"><i class="bi bi-check2"></i></i></button>
+        </div>
+     </form>
+</div>
+
+<%- include('footer') -%>
